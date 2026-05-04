@@ -1,28 +1,37 @@
 import { USERS } from "../../data/users";
 import { useEffect, useState } from "react";
 import type { User } from "../../types/userTypes";
-import { getLoggedinUser, setLoggedinUser } from "../../utils/helper";
+import { getLoggedinUserFromLS, setLoggedinUserToLS } from "../../utils/helper";
+import { useLocation, useNavigate } from "react-router";
 
 export const LoginMenu = () => {
   // State
   const [openMenu, setOpenMenu] = useState(false);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
 
+  // Hooks
+  const location = useLocation();
+  const navigate = useNavigate();
+
   // Methods
   const onUserSelect = (user: User) => {
     // Update user in local storage
-    setLoggedinUser(user);
+    setLoggedinUserToLS(user.id);
     // Update user in local state
     setSelectedUser(user);
     // Dispatch custom event to notify user changes
     window.dispatchEvent(new Event("userChanged"));
     // Close the menu
     setOpenMenu(false);
+    // Check on which route we are, if we are not on dashboard redirect
+    if (location.pathname !== "/") {
+      navigate("/");
+    }
   };
 
   //   Hooks
   useEffect(() => {
-    const loggedInUser = getLoggedinUser();
+    const loggedInUser = getLoggedinUserFromLS();
     loggedInUser ? setSelectedUser(loggedInUser) : setSelectedUser(USERS[0]);
   }, []);
 

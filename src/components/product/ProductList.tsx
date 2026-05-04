@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Product } from "./Product.tsx";
-import { getLoggedinUser } from "../../utils/helper.ts";
+import { getLoggedinUserFromLS } from "../../utils/helper.ts";
 import type { Product as ProductType } from "../../types/productTypes.ts";
+import { PRODUCTS } from "../../data/products.ts";
 
 export const ProductList = () => {
   // State
@@ -10,10 +11,14 @@ export const ProductList = () => {
   // Hooks
   useEffect(() => {
     function updateProducts() {
-      const loggedInUser = getLoggedinUser();
+      const loggedInUser = getLoggedinUserFromLS();
       if (!loggedInUser) return;
 
-      setProducts(loggedInUser.products);
+      const authUserProducts = PRODUCTS.filter((product) =>
+        loggedInUser.products.includes(product.id),
+      );
+
+      setProducts(authUserProducts);
     }
 
     // Listen to user changed event

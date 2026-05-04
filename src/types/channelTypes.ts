@@ -11,8 +11,8 @@ export interface Chunk {
 }
 
 export interface EmbeddedChunks {
-  embedding: any[];
   id: string | number;
+  embedding: any[];
   text: string;
 }
 

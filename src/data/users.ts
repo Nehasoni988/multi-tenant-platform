@@ -1,4 +1,3 @@
-import { PRODUCTS } from "./products";
 import { ROLES } from "./roles";
 
 export const USERS = [
@@ -6,18 +5,30 @@ export const USERS = [
     id: 1,
     name: "Admin",
     role: ROLES.ADMIN,
-    products: [PRODUCTS[0], PRODUCTS[1], PRODUCTS[2]],
+    products: [],
   },
   {
     id: 2,
     name: "User-1",
     role: ROLES.USER,
-    products: [PRODUCTS[0], PRODUCTS[1]],
+    products: [],
   },
   {
     id: 3,
     name: "User-2",
     role: ROLES.USER,
-    products: [PRODUCTS[2]],
+    products: [],
+  },
+  {
+    id: 4,
+    name: "User-3",
+    role: ROLES.USER,
+    products: [],
+  },
+  {
+    id: 5,
+    name: "User-4",
+    role: ROLES.USER,
+    products: [],
   },
 ];
