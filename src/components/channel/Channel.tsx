@@ -127,7 +127,7 @@ export const Channel = ({ channel }: ComponentProps) => {
 
             {/* Tab Content */}
             {activeTab === "pdf" && (
-              <div>
+              <div className="grid grid-cols-1 gap-8">
                 {channel.content.pdfs.map((pdf) => (
                   <PDF
                     pdf={pdf}
@@ -140,7 +140,7 @@ export const Channel = ({ channel }: ComponentProps) => {
             )}
 
             {activeTab === "videos" && (
-              <div className="grid grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                 {channel.content.videos.map((video) => (
                   <Video
                     video={video}
