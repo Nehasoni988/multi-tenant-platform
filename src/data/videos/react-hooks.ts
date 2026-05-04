@@ -1,0 +1,211 @@
+export const REACT_HOOKS_VIDEO = {
+  id: 103,
+  title: "Understanding useState Hook",
+  duration: "09:50",
+  url: "https://www.youtube.com/embed/V9i3cGD-mts?si=p8zJEsV1XyJa3JmS",
+  transcript: [
+    {
+      id: 1,
+      duration: "0:00",
+      text: "Welcome to the last useState tutorial you're ever going to have to watch.",
+    },
+    {
+      id: 2,
+      duration: "0:04",
+      text: "If you watch this video, you're going to understand useState completely.",
+    },
+    {
+      id: 3,
+      duration: "0:09",
+      text: "You're going to know how to use it, when to use it, and even teach it to others.",
+    },
+    {
+      id: 4,
+      duration: "0:15",
+      text: "Does this sound good to you? Great. Let's jump in and learn about useState.",
+    },
+    {
+      id: 5,
+      duration: "0:21",
+      text: "We have a simple application to learn how to work with useState.",
+    },
+    {
+      id: 6,
+      duration: "0:26",
+      text: "Before implementing the hook, we must understand what state is.",
+    },
+    {
+      id: 7,
+      duration: "0:31",
+      text: "State is a very important concept in applications.",
+    },
+    { id: 8, duration: "0:37", text: "State is data that changes with time." },
+    {
+      id: 9,
+      duration: "0:44",
+      text: "It can be different from one moment to another or from one render to another in React.",
+    },
+    {
+      id: 10,
+      duration: "0:49",
+      text: "Each render can have different state values.",
+    },
+    {
+      id: 11,
+      duration: "0:54",
+      text: "For example, a loading spinner while fetching data from an API.",
+    },
+    {
+      id: 12,
+      duration: "0:59",
+      text: "We can have a loading state set to true during the request.",
+    },
+    {
+      id: 13,
+      duration: "1:04",
+      text: "When data arrives, loading becomes false and data is displayed.",
+    },
+    {
+      id: 14,
+      duration: "1:09",
+      text: "Data itself is also state because it changes.",
+    },
+    {
+      id: 15,
+      duration: "1:14",
+      text: "Before fetching, data is undefined or empty.",
+    },
+    {
+      id: 16,
+      duration: "1:18",
+      text: "After fetching, data becomes what we receive from the server.",
+    },
+    { id: 17, duration: "1:23", text: "We may also track errors as state." },
+    {
+      id: 18,
+      duration: "1:29",
+      text: "State tracks whether a component is loading, has error, or has data.",
+    },
+    {
+      id: 19,
+      duration: "1:34",
+      text: "State is any information that can change over time across renders.",
+    },
+    {
+      id: 20,
+      duration: "2:04",
+      text: "Now that we understand state, let's implement useState.",
+    },
+    {
+      id: 21,
+      duration: "2:09",
+      text: "useState is the hook used to manipulate state in React.",
+    },
+    {
+      id: 22,
+      duration: "2:15",
+      text: "We will build a simple counter application.",
+    },
+    {
+      id: 23,
+      duration: "2:21",
+      text: "It will have a counter and buttons to increment and decrement.",
+    },
+    { id: 24, duration: "2:25", text: "First, we import useState from React." },
+    {
+      id: 25,
+      duration: "2:33",
+      text: "Then we create a state variable using an array.",
+    },
+    {
+      id: 26,
+      duration: "2:38",
+      text: "The first element is the state variable.",
+    },
+    {
+      id: 27,
+      duration: "2:43",
+      text: "The second element is the updater function.",
+    },
+    {
+      id: 28,
+      duration: "2:47",
+      text: "In our case, we name them count and setCount.",
+    },
+    {
+      id: 29,
+      duration: "2:53",
+      text: "Naming can be anything, but descriptive naming is best practice.",
+    },
+    {
+      id: 30,
+      duration: "3:03",
+      text: "By convention, updater functions start with 'set'.",
+    },
+    { id: 31, duration: "3:09", text: "We assign them using useState()." },
+    {
+      id: 32,
+      duration: "3:15",
+      text: "Without a default value, state is undefined.",
+    },
+    {
+      id: 33,
+      duration: "3:20",
+      text: "We can pass a default value inside useState().",
+    },
+    { id: 34, duration: "3:24", text: "For example, starting count from 0." },
+    { id: 35, duration: "3:30", text: "Now our component becomes stateful." },
+    {
+      id: 36,
+      duration: "3:34",
+      text: "Next, we need a way to update the state.",
+    },
+    {
+      id: 37,
+      duration: "3:41",
+      text: "We create a button and attach an onClick handler.",
+    },
+    { id: 38, duration: "3:46", text: "Inside, we call setCount." },
+    { id: 39, duration: "3:51", text: "We update count by adding 1." },
+    { id: 40, duration: "3:56", text: "Clicking increments the count value." },
+    { id: 41, duration: "4:00", text: "We can set any value, like 100." },
+    {
+      id: 42,
+      duration: "4:05",
+      text: "Now we add a second button to decrement.",
+    },
+    { id: 43, duration: "4:11", text: "We subtract 1 from count." },
+    { id: 44, duration: "4:17", text: "Now we can increment and decrement." },
+    {
+      id: 45,
+      duration: "4:22",
+      text: "This is the simplest way to use useState.",
+    },
+    {
+      id: 46,
+      duration: "4:28",
+      text: "You now know how to create, update, and initialize state.",
+    },
+    {
+      id: 47,
+      duration: "4:32",
+      text: "Most applications use state, so this is a crucial skill.",
+    },
+    {
+      id: 48,
+      duration: "4:37",
+      text: "You can now use useState in your own apps.",
+    },
+    {
+      id: 49,
+      duration: "4:43",
+      text: "You can even teach others and look like a senior developer.",
+    },
+    {
+      id: 50,
+      duration: "4:49",
+      text: "Thanks for watching. More React tutorials are coming.",
+    },
+    { id: 51, duration: "4:55", text: "See you in the next video." },
+  ],
+};
