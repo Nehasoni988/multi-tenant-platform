@@ -1,5 +1,7 @@
 # Canara HSBC – Learning Portal
 
+🚀 **Live Demo:** https://multi-tenant-platform-by-neha-soni.vercel.app/
+
 A role-based learning portal built as a frontend assignment. The app lets an **Admin** manage users and control which learning products each user can access. Regular users can browse their assigned products, explore channels, view PDFs, watch videos, and interact with an AI-powered chatbot that answers questions from the content.
 
 ---
