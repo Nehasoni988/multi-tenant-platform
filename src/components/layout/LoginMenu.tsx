@@ -29,7 +29,7 @@ export const LoginMenu = () => {
     }
   };
 
-  //   Hooks
+  // Hooks
   useEffect(() => {
     const loggedInUser = getLoggedinUserFromLS();
     loggedInUser ? setSelectedUser(loggedInUser) : setSelectedUser(USERS[0]);

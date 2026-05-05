@@ -14,9 +14,10 @@ export const Dashboard = () => {
   const [SelectedComponent, setSelectedComponent] =
     useState<React.ElementType | null>(null);
 
+  // Hooks
   useEffect(() => {
     const updateComponent = () => {
-      const user = getLoggedinUserFromLS(); // ⚠️ re-fetch here
+      const user = getLoggedinUserFromLS(); 
 
       if (user?.role === ROLES.USER) {
         setSelectedComponent(() => Components.productList);

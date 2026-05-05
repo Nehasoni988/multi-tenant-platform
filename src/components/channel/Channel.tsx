@@ -3,6 +3,11 @@ import { PDF } from "../media/PDF";
 import { Video } from "../media/Video";
 import ChatBot, { type RcbUserSubmitTextEvent } from "react-chatbotify";
 import type { Channel as ChannelType } from "../../types/channelTypes";
+import {
+  chatbotSettings,
+  chatbotStyles,
+  chatbotThemes,
+} from "../../data/chatbot";
 
 declare global {
   interface WindowEventMap {
@@ -15,50 +20,6 @@ interface ComponentProps {
 }
 
 export const Channel = ({ channel }: ComponentProps) => {
-  // Constants
-  const settings = {
-    event: {
-      rcbUserSubmitText: true,
-    },
-    emoji: {
-      disabled: true,
-    },
-    fileAttachment: {
-      disabled: true,
-    },
-  };
-
-  // styles here
-  const styles = {
-    headerStyle: {
-      background: "#2663EB",
-      color: "#fff",
-    },
-    tooltipStyle: {
-      display: "none",
-    },
-    sendButtonStyle: {
-      background: "#2663EB",
-      color: "#fff",
-    },
-    sendButtonHoveredStyle: {
-      background: "#2663EB",
-      color: "#fff",
-    },
-    chatButtonStyle: {
-      background: "#2663EB",
-      color: "#fff",
-    },
-    notificationIconStyle: {
-      display: "none",
-    },
-    notificationBadgeStyle: {
-      display: "none",
-    },
-  };
-
-  const themes = [{ id: "minimal_midnight" }];
-
   // State
   const [activeTab, setActiveTab] = useState("pdf"); // pdf | videos
   const [query, setQuery] = useState("");
@@ -155,10 +116,10 @@ export const Channel = ({ channel }: ComponentProps) => {
         )}
 
         <ChatBot
-          themes={themes}
+          themes={chatbotThemes}
           flow={flow}
-          settings={settings}
-          styles={styles}
+          settings={chatbotSettings}
+          styles={chatbotStyles}
         />
       </div>
     </>

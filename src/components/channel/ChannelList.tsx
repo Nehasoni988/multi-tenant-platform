@@ -76,6 +76,7 @@ export const ChannelList = () => {
       </nav>
 
       {productRef.current && <Product product={productRef.current} />}
+      
       <div className="md:flex gap-4">
         {/* LEFT: Vertical Tabs */}
         <ul className="space-y-2 md:w-64">
