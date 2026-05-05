@@ -15,9 +15,6 @@ export const chatbotStyles = {
     background: "#2663EB",
     color: "#fff",
   },
-  tooltipStyle: {
-    display: "none",
-  },
   sendButtonStyle: {
     background: "#2663EB",
     color: "#fff",

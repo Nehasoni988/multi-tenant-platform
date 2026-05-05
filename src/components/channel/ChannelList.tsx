@@ -12,11 +12,11 @@ export const ChannelList = () => {
   const [channels, setChannels] = useState<ChannelType[]>([]);
   const [activeChannel, setActiveChannel] = useState<ChannelType | null>(null);
 
-  // Hooks
+  // Router Hooks
   const { productId } = useParams();
   const productRef = useRef<ProductType | null>(null);
 
-  // UseEffect
+  // Hooks
   useEffect(() => {
     const product = PRODUCTS.find((p) => p.id === productId);
     if (!product) return;
@@ -34,73 +34,61 @@ export const ChannelList = () => {
   }, [productId]);
 
   return (
-    <>
-      <nav className="flex" aria-label="Breadcrumb">
-        <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
-          <li className="inline-flex items-center">
-            <Link
-              to="/"
-              className="inline-flex items-center text-sm font-medium text-body hover:text-fg-brand"
-            >
-              Products
-            </Link>
-          </li>
-
-          <li aria-current="page">
-            <div className="flex items-center space-x-1.5">
-              <svg
-                className="w-3.5 h-3.5 rtl:rotate-180 text-body"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="m9 5 7 7-7 7"
-                />
-              </svg>
-              {productRef.current && (
-                <span className="inline-flex items-center text-sm font-medium text-body-subtle">
-                  {productRef.current.title}
-                </span>
-              )}
-            </div>
-          </li>
-        </ol>
+    <div className="max-w-7xl mx-auto space-y-5">
+      {/* Breadcrumb */}
+      <nav className="flex items-center gap-2 text-sm">
+        <Link to="/" className="text-gray-500 hover:text-blue-600 font-medium transition-colors">
+          Products
+        </Link>
+        <svg className="w-4 h-4 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+        {productRef.current && (
+          <span className="text-gray-900 font-medium">{productRef.current.title}</span>
+        )}
       </nav>
 
-      {productRef.current && <Product product={productRef.current} />}
-      
-      <div className="md:flex gap-4">
-        {/* LEFT: Vertical Tabs */}
-        <ul className="space-y-2 md:w-64">
-          {channels.map((channel) => (
-            <li key={channel.id}>
-              <button
-                onClick={() => {
-                  setActiveChannel(channel);
-                }}
-                className={`w-full text-left px-4 py-2 rounded-base ${
-                  activeChannel?.id === channel.id
-                    ? "bg-blue-600 text-white"
-                    : "bg-gray-200"
-                }`}
-              >
-                {channel.title}
-              </button>
-            </li>
-          ))}
-        </ul>
+      {/* Product card (compact) */}
+      {productRef.current && (
+        <div className="max-w-sm">
+          <Product product={productRef.current} />
+        </div>
+      )}
+
+      {/* Channels Section */}
+      <div className="flex flex-col md:flex-row gap-4">
+        {/* LEFT: Channel tabs */}
+        <aside className="md:w-56 flex-shrink-0">
+          <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 px-1">Channels</p>
+          <ul className="space-y-1">
+            {channels.map((channel) => {
+              const isActive = activeChannel?.id === channel.id;
+              return (
+                <li key={channel.id}>
+                  <button
+                    onClick={() => setActiveChannel(channel)}
+                    className={`w-full text-left px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150 flex items-center gap-2.5 ${
+                      isActive
+                        ? "bg-blue-600 text-white shadow-sm"
+                        : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+                    }`}
+                  >
+                    <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${isActive ? "bg-white" : "bg-gray-300"}`} />
+                    {channel.title}
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </aside>
 
         {/* RIGHT: Content */}
-        {activeChannel && <Channel channel={activeChannel} />}
+        {activeChannel && (
+          <div className="flex-1 min-w-0">
+            <Channel channel={activeChannel} />
+          </div>
+        )}
       </div>
-    </>
+    </div>
   );
 };

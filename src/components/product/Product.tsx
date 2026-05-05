@@ -7,59 +7,50 @@ interface ComponentProps {
 }
 
 export const Product = ({ product }: ComponentProps) => {
-  // Hooks
+  // Router Hooks
   const match = useMatch("/product/:productId/channels");
-
-  useEffect(() => {
-    match ? setShowLink(false) : setShowLink(true);
-  }, []);
 
   // State
   const [showLink, setShowLink] = useState(false);
 
+  // Hooks
+  useEffect(() => {
+    match ? setShowLink(false) : setShowLink(true);
+  }, []);
+
   return (
-    <>
-      <div className="bg-neutral-primary-soft block p-6 border border-default rounded-base shadow-xs">
+    <div className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-blue-200 transition-all duration-200 flex flex-col">
+      {/* Icon */}
+      <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center mb-4 flex-shrink-0">
         <img
           src={product.image}
           alt={product.title}
-          width="70px"
-          height="70px"
-          className="mb-4"
+          className="w-8 h-8 object-contain"
         />
+      </div>
 
-        <a href="#">
-          <h5 className="mb-2 text-2xl font-semibold tracking-tight text-heading">
-            {product.title}
-          </h5>
-        </a>
-        <p className="mb-3 text-body">{product.description}</p>
-        {showLink && (
+      {/* Content */}
+      <div className="flex-1">
+        <h5 className="text-base font-semibold text-gray-900 mb-1.5">
+          {product.title}
+        </h5>
+        <p className="text-sm text-gray-500 leading-relaxed">{product.description}</p>
+      </div>
+
+      {/* Footer */}
+      {showLink && (
+        <div className="mt-4 pt-4 border-t border-gray-100">
           <Link
             to={`/product/${product.id}/channels`}
-            className="inline-flex font-medium items-center text-fg-brand hover:underline"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:text-blue-700 group"
           >
-            See more info
-            <svg
-              className="w-4 h-4 ms-2 rtl:rotate-[270deg]"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M18 14v4.833A1.166 1.166 0 0 1 16.833 20H5.167A1.167 1.167 0 0 1 4 18.833V7.167A1.166 1.166 0 0 1 5.167 6h4.618m4.447-2H20v5.768m-7.889 2.121 7.778-7.778"
-              />
+            Explore channels
+            <svg className="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
           </Link>
-        )}
-      </div>
-    </>
+        </div>
+      )}
+    </div>
   );
 };
